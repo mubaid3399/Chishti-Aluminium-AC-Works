@@ -19,6 +19,11 @@ dist/
 .DS_Store
 Thumbs.db
 
+# Original asset backups (created by optimization scripts)
+src/assets/_original-images/
+src/assets/_original-videos/
+src/assets/project/_original-videos/
+
 # Logs
 *.log
 npm-debug.log*

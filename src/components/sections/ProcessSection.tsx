@@ -220,7 +220,7 @@ const aluminiumSteps: ProcessStep[] = [
     description:
       "Our skilled installation crew executes the on-site fitting with architectural precision — mounting aluminium frames, setting glass panels, and sealing every joint to perfection.",
     image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=72",
   },
   {
     step: "05",
@@ -228,7 +228,7 @@ const aluminiumSteps: ProcessStep[] = [
     description:
       "A comprehensive quality inspection ensures flawless alignment, structural integrity, and pristine finish — before final handover with maintenance documentation and full warranty.",
     image:
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=72",
   },
 ];
 

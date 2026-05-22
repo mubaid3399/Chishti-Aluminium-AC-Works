@@ -1,11 +1,19 @@
 import { FadeIn } from "@/components/ui/fade-in";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Link } from "wouter";
+import upvcImg from "@/assets/service-image/UPVC & Door Systems genrate image in which worker are fittng UPVC & Door Systems.png";
+import homeInteriorImg from "@/assets/service-image/Home Interior Solutions.png";
+import electricalImg from "@/assets/service-image/Ac fitting.png";
+import refrigerationImg from "@/assets/service-image/Refrigeration Services.png";
+import glassFilmImg from "@/assets/service-image/Glass Film & Protection.png";
+import showerCabinImg from "@/assets/service-image/Shower cabin.png";
 
 // Premium Web-Optimized Unsplash Images
-const srvResImg = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80";
-const srvComImg = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80";
-const srvRepImg = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80";
+const srvResImg = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=72";
+const srvComImg = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=72";
+const srvRepImg = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=72";
+const washingMachineImg = "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=72";
+const aluFabricationImg = "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1200&q=72";
 
 export default function Services() {
   const services = [
@@ -107,32 +115,57 @@ export default function Services() {
               {
                 title: "UPVC & Door Systems",
                 desc: "Premium UPVC windows, soundproof double-glazed systems, and modern door installations for noise-free living.",
+                img: upvcImg,
               },
               {
                 title: "Home Interior Solutions",
                 desc: "Luxury aluminium wardrobes, kitchen cabinets, decorative glass, and premium balcony railing systems.",
+                img: homeInteriorImg,
               },
               {
                 title: "Electrical & Technical",
                 desc: "Professional house and office wiring, lighting installations, security systems, and smart home electrical.",
+                img: electricalImg,
               },
               {
                 title: "Refrigeration Services",
                 desc: "Complete refrigerator and deep freezer repair, commercial cold storage maintenance, and cooling diagnostics.",
+                img: refrigerationImg,
               },
               {
                 title: "Glass Film & Protection",
                 desc: "Premium heat protection films, UV blocking, privacy solutions, and decorative glass films for commercial and residential use.",
+                img: glassFilmImg,
               },
               {
                 title: "Aluminium Fabrication",
                 desc: "Custom aluminium kitchen cabinets, wardrobe systems, and bespoke fabrication for unique architectural requirements.",
+                img: aluFabricationImg,
+              },
+              {
+                title: "Washing Machine Repair",
+                desc: "Expert repair and servicing of all washing machine brands — automatic, semi-automatic, and front-load. Motor, drum, and electronic board diagnostics with genuine spare parts.",
+                img: washingMachineImg,
+              },
+              {
+                title: "Shower Cabin Solutions",
+                desc: "Premium frameless and semi-frameless shower cabins, custom enclosures, and bathroom glass partitions — designed for luxury, durability, and easy maintenance.",
+                img: showerCabinImg,
               },
             ].map((item, i) => (
               <FadeIn key={i} delay={i * 0.1}>
-                <div className="bg-white p-8 rounded-2xl h-full border border-gray-100 hover:shadow-lg transition-shadow duration-300">
-                  <h3 className="font-serif text-2xl font-bold mb-4">{item.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                <div className="bg-white rounded-2xl h-full border border-gray-100 hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col">
+                  <div className="aspect-[16/10] w-full overflow-hidden">
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-8 flex-1">
+                    <h3 className="font-serif text-2xl font-bold mb-4">{item.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
               </FadeIn>
             ))}

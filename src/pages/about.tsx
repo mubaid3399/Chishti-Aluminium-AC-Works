@@ -11,10 +11,10 @@ import b7 from "@/assets/brands-logo/pngegg (6).png";
 import b8 from "@/assets/brands-logo/pngegg (7).png";
 
 // Premium Web-Optimized Unsplash Images
-const ab1 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=1000&q=80";
-const ab2 = "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&h=1000&q=80";
-const ab3 = "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&h=1000&q=80";
-const ab4 = "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&h=1000&q=80";
+const ab1 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=1000&q=72";
+const ab2 = "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&h=1000&q=72";
+const ab3 = "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&h=1000&q=72";
+const ab4 = "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&h=1000&q=72";
 
 export default function About() {
   return (

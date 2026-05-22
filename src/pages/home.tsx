@@ -7,6 +7,7 @@ import { ProcessSection } from "@/components/sections/ProcessSection";
 import { BeforeAfterSection } from "@/components/sections/BeforeAfterSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { HomeFAQSection } from "@/components/sections/HomeFAQSection";
+import { VideoShowcase } from "@/components/sections/VideoShowcase";
 
 // Brand Logos
 import b1 from "@/assets/brands-logo/pngegg.png";
@@ -19,11 +20,11 @@ import b7 from "@/assets/brands-logo/pngegg (6).png";
 import b8 from "@/assets/brands-logo/pngegg (7).png";
 
 // Premium Web-Optimized Unsplash Images
-const heroImg = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80";
-const aboutImg = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=1000&q=80";
-const srvResImg = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80";
-const srvComImg = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80";
-const srvRepImg = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80";
+const heroImg = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=72";
+const aboutImg = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=1000&q=72";
+const srvResImg = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=72";
+const srvComImg = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=72";
+const srvRepImg = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=72";
 
 // Local Hero Background Images
 import heroB1 from "@/assets/hero-img/heroB-1 (1).png";
@@ -239,7 +240,7 @@ export default function Home() {
             {/* Background Image Container */}
             <div className="absolute inset-0 z-0">
               <img 
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80" 
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=72" 
                 alt="CHISHTI Premium Architectural Glass and Aluminium Facade" 
                 className="w-full h-full object-cover object-center scale-105"
               />
@@ -374,6 +375,9 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      {/* Video Showcase — Real Job-Site Reels */}
+      <VideoShowcase />
 
       {/* Before & After Transformations */}
       <BeforeAfterSection />
