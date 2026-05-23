@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -69,8 +69,18 @@ export function Navbar() {
               })}
             </div>
 
-            {/* CTA */}
-            <div className="hidden md:block">
+            {/* CTA + Phone */}
+            <div className="hidden md:flex items-center gap-3">
+              <a
+                href="tel:0515975105"
+                className={cn(
+                  "flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70",
+                  isHome && !isScrolled ? "text-white" : "text-black"
+                )}
+              >
+                <Phone className="w-3.5 h-3.5" />
+                051-5975105
+              </a>
               <Link 
                 href="/contact"
                 className={cn(
@@ -125,9 +135,15 @@ export function Navbar() {
                   {item.name}
                 </Link>
               ))}
+              <a
+                href="tel:0515975105"
+                className="mt-6 flex items-center justify-center gap-2 w-full border-2 border-black text-black py-4 rounded-full font-bold text-lg"
+              >
+                <Phone className="w-5 h-5" /> 051-5975105
+              </a>
               <Link 
                 href="/contact"
-                className="mt-8 flex items-center justify-center gap-2 w-full bg-black text-white py-4 rounded-full font-bold text-lg"
+                className="mt-4 flex items-center justify-center gap-2 w-full bg-black text-white py-4 rounded-full font-bold text-lg"
               >
                 Get a Quote <ArrowRight className="w-5 h-5" />
               </Link>

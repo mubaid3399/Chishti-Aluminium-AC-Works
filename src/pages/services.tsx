@@ -2,17 +2,17 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Link } from "wouter";
 import upvcImg from "@/assets/service-image/UPVC & Door Systems genrate image in which worker are fittng UPVC & Door Systems.png";
-import homeInteriorImg from "@/assets/service-image/Home Interior Solutions.png";
 import electricalImg from "@/assets/service-image/Ac fitting.png";
 import refrigerationImg from "@/assets/service-image/Refrigeration Services.png";
 import glassFilmImg from "@/assets/service-image/Glass Film & Protection.png";
 import showerCabinImg from "@/assets/service-image/Shower cabin.png";
+import fridgeAcRepairingImg from "@/assets/service-image/Ac fridge reparing.png";
 
 // Premium Web-Optimized Unsplash Images
 const srvResImg = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=72";
 const srvComImg = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=72";
 const srvRepImg = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=72";
-const washingMachineImg = "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=72";
+const washingMachineImg = fridgeAcRepairingImg;
 const aluFabricationImg = "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1200&q=72";
 
 export default function Services() {
@@ -116,11 +116,6 @@ export default function Services() {
                 title: "UPVC & Door Systems",
                 desc: "Premium UPVC windows, soundproof double-glazed systems, and modern door installations for noise-free living.",
                 img: upvcImg,
-              },
-              {
-                title: "Home Interior Solutions",
-                desc: "Luxury aluminium wardrobes, kitchen cabinets, decorative glass, and premium balcony railing systems.",
-                img: homeInteriorImg,
               },
               {
                 title: "Electrical & Technical",

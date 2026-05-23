@@ -153,6 +153,12 @@ export default function Home() {
               >
                 Start Your Project <ArrowRight className="w-5 h-5" />
               </Link>
+              <p className="mt-5 text-gray-400 text-sm drop-shadow-sm">
+                Prefer to call?{" "}
+                <a href="tel:0515975105" className="text-white font-semibold hover:underline">051-5975105</a>
+                {" / "}
+                <a href="tel:03058645051" className="text-white font-semibold hover:underline">0305-8645051</a>
+              </p>
             </div>
           </FadeIn>
         </div>

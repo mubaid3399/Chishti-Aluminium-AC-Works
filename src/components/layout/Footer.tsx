@@ -37,7 +37,7 @@ export function Footer() {
           </p>
           <div className="flex gap-4 mt-6">
             <a 
-              href="https://facebook.com" 
+              href="https://web.facebook.com/chishti.aluminium" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="w-10 h-10 rounded-full border border-white/10 hover:border-white/40 flex items-center justify-center text-gray-400 hover:text-white hover:scale-105 transition-all duration-300"
@@ -46,7 +46,7 @@ export function Footer() {
               <FaFacebookF className="w-4 h-4" />
             </a>
             <a 
-              href="https://instagram.com" 
+              href="https://www.instagram.com/chishti_works/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="w-10 h-10 rounded-full border border-white/10 hover:border-white/40 flex items-center justify-center text-gray-400 hover:text-white hover:scale-105 transition-all duration-300"
@@ -55,7 +55,7 @@ export function Footer() {
               <FaInstagram className="w-4 h-4" />
             </a>
             <a 
-              href="https://tiktok.com" 
+              href="https://www.tiktok.com/@chshtialuminiumcoolpoint" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="w-10 h-10 rounded-full border border-white/10 hover:border-white/40 flex items-center justify-center text-gray-400 hover:text-white hover:scale-105 transition-all duration-300"
@@ -80,9 +80,10 @@ export function Footer() {
         <div>
           <h4 className="font-bold text-lg mb-6">Contact</h4>
           <ul className="flex flex-col gap-4 text-gray-400">
-            <li><a href="tel:03155385439" className="hover:text-white transition-colors">0315 5385439</a></li>
-            <li>info@chishtialuminium.com</li>
-            <li>Main Market, Commercial Area<br/>Lahore, Pakistan</li>
+            <li><a href="tel:0515975105" className="hover:text-white transition-colors">051-5975105</a></li>
+            <li><a href="tel:03058645051" className="hover:text-white transition-colors">0305-8645051</a></li>
+            <li><a href="mailto:info@chishtialuminium.com" className="hover:text-white transition-colors">info@chishtialuminium.com</a></li>
+            <li>P.W.D Street Number 1, Block A Sector A PWD Society<br/>Islamabad, 43000, Pakistan</li>
           </ul>
         </div>
       </div>

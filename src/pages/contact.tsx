@@ -1,13 +1,18 @@
 import { FadeIn } from "@/components/ui/fade-in";
-import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowRight, Loader2 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
+
+// Primary WhatsApp number for inquiries (international format, no +)
+const WHATSAPP_NUMBER = "923058645051";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -18,7 +23,8 @@ const formSchema = z.object({
 
 export default function Contact() {
   const { toast } = useToast();
-  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -30,12 +36,27 @@ export default function Contact() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Message Sent",
-      description: "We've received your inquiry and will be in touch shortly.",
-    });
-    form.reset();
+    setIsSubmitting(true);
+
+    const text =
+      `*New Inquiry from Website*%0A%0A` +
+      `*Name:* ${encodeURIComponent(values.name)}%0A` +
+      `*Email:* ${encodeURIComponent(values.email)}%0A` +
+      `*Phone:* ${encodeURIComponent(values.phone)}%0A%0A` +
+      `*Project Details:*%0A${encodeURIComponent(values.message)}`;
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+
+    // Small delay so user sees the loading state before WhatsApp opens
+    setTimeout(() => {
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      toast({
+        title: "Opening WhatsApp",
+        description: "Your inquiry has been prepared. Please send it from WhatsApp.",
+      });
+      form.reset();
+      setIsSubmitting(false);
+    }, 400);
   }
 
   return (
@@ -70,8 +91,16 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-1">Call Us</div>
-                      <div className="text-xl font-medium">
-                        <a href="tel:03155385439" className="hover:underline">0315 5385439</a>
+                      <div className="space-y-1">
+                        <div className="text-xl font-medium">
+                          <a href="tel:0515975105" className="hover:underline">051-5975105</a>
+                        </div>
+                        <div className="text-lg font-medium">
+                          <a href="tel:03058645051" className="hover:underline">0305-8645051</a>
+                        </div>
+                        <div className="text-lg font-medium">
+                          <a href="tel:03155385439" className="hover:underline">0315-5385439</a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -82,7 +111,9 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-1">Email Us</div>
-                      <div className="text-xl font-medium">info@chishtialuminium.com</div>
+                      <div className="text-xl font-medium">
+                        <a href="mailto:info@chishtialuminium.com" className="hover:underline">info@chishtialuminium.com</a>
+                      </div>
                     </div>
                   </div>
                   
@@ -93,9 +124,9 @@ export default function Contact() {
                     <div>
                       <div className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-1">Visit Us</div>
                       <div className="text-xl font-medium leading-relaxed">
-                        Main Market<br/>
-                        Commercial Area<br/>
-                        Lahore, Pakistan
+                        P.W.D Street Number 1<br/>
+                        Block A Sector A PWD Society<br/>
+                        Islamabad, 43000, Pakistan
                       </div>
                     </div>
                   </div>
@@ -103,14 +134,13 @@ export default function Contact() {
               </div>
 
               <div className="mt-16 rounded-2xl overflow-hidden aspect-video bg-gray-200">
-                {/* Map Placeholder */}
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d217892.06498049!2d74.22327099999999!3d31.4203956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190483e58107d9%3A0xc23abe6ccc7e2462!2sLahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1709664536643!5m2!1sen!2s" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen 
-                  loading="lazy" 
+                <iframe
+                  src="https://www.google.com/maps?q=Chishti+Aluminium,+PWD+Housing+Society,+Islamabad,+Pakistan&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="grayscale contrast-125 opacity-80"
                 />
@@ -130,7 +160,7 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel className="text-black font-bold">Full Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="John Doe" className="bg-gray-50 border-transparent focus-visible:ring-black h-12 rounded-xl px-4" {...field} />
+                        <Input placeholder="Enter your full name" className="bg-gray-50 border-transparent focus-visible:ring-black h-12 rounded-xl px-4" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -145,7 +175,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel className="text-black font-bold">Email Address</FormLabel>
                         <FormControl>
-                          <Input placeholder="john@example.com" className="bg-gray-50 border-transparent focus-visible:ring-black h-12 rounded-xl px-4" {...field} />
+                          <Input placeholder="yourname@email.com" className="bg-gray-50 border-transparent focus-visible:ring-black h-12 rounded-xl px-4" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -159,7 +189,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel className="text-black font-bold">Phone Number</FormLabel>
                         <FormControl>
-                          <Input placeholder="(555) 123-4567" className="bg-gray-50 border-transparent focus-visible:ring-black h-12 rounded-xl px-4" {...field} />
+                          <Input placeholder="0305 8645051" className="bg-gray-50 border-transparent focus-visible:ring-black h-12 rounded-xl px-4" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -175,7 +205,7 @@ export default function Contact() {
                       <FormLabel className="text-black font-bold">Project Details</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Tell us about your project requirements..." 
+                          placeholder="Describe your project — aluminium, glass, HVAC, or commercial fit-out requirements..." 
                           className="bg-gray-50 border-transparent focus-visible:ring-black min-h-[160px] rounded-xl p-4 resize-none" 
                           {...field} 
                         />
@@ -185,11 +215,22 @@ export default function Contact() {
                   )}
                 />
                 
-                <Button 
-                  type="submit" 
-                  className="w-full rounded-full h-14 text-lg font-bold bg-black text-white hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full rounded-full h-14 text-lg font-bold bg-green-600 text-white hover:bg-green-700 transition-colors flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Send Inquiry <ArrowRight className="w-5 h-5" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Opening WhatsApp...
+                    </>
+                  ) : (
+                    <>
+                      <FaWhatsapp className="w-5 h-5" />
+                      Send via WhatsApp
+                    </>
+                  )}
                 </Button>
               </form>
             </Form>
