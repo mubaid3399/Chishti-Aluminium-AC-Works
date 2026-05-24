@@ -1,12 +1,13 @@
 import { FadeIn } from "@/components/ui/fade-in";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Link } from "wouter";
-import upvcImg from "@/assets/service-image/UPVC & Door Systems genrate image in which worker are fittng UPVC & Door Systems.png";
-import electricalImg from "@/assets/service-image/Ac fitting.png";
-import refrigerationImg from "@/assets/service-image/Refrigeration Services.png";
-import glassFilmImg from "@/assets/service-image/Glass Film & Protection.png";
-import showerCabinImg from "@/assets/service-image/Shower cabin.png";
-import fridgeAcRepairingImg from "@/assets/service-image/Ac fridge reparing.png";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
+import upvcImg from "@/assets/service-image/UPVC & Door Systems genrate image in which worker are fittng UPVC & Door Systems.webp";
+import electricalImg from "@/assets/service-image/Ac fitting.webp";
+import refrigerationImg from "@/assets/service-image/Refrigeration Services.webp";
+import glassFilmImg from "@/assets/service-image/Glass Film & Protection.webp";
+import showerCabinImg from "@/assets/service-image/Shower cabin.webp";
+import fridgeAcRepairingImg from "@/assets/service-image/Ac fridge reparing.webp";
 
 // Premium Web-Optimized Unsplash Images
 const srvResImg = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=72";
@@ -16,6 +17,10 @@ const washingMachineImg = fridgeAcRepairingImg;
 const aluFabricationImg = "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1200&q=72";
 
 export default function Services() {
+  useDocumentMeta({
+    title: "Services — Aluminium, Glass, HVAC & UPVC | CHISHTI",
+    description: "Explore CHISHTI's full range of services: aluminium fabrication, architectural glass, HVAC and refrigeration, UPVC doors, shower cabins, glass film, and commercial fit-outs.",
+  });
   const services = [
     {
       title: "Aluminium & Glass Systems",
@@ -76,7 +81,7 @@ export default function Services() {
           <div key={i} className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
             <FadeIn direction={i % 2 === 0 ? "right" : "left"} className={i % 2 !== 0 ? 'lg:order-last' : ''}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3] w-full">
-                <img src={srv.img} alt={srv.title} className="w-full h-full object-cover" />
+                <img src={srv.img} alt={srv.title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
               </div>
             </FadeIn>
             <FadeIn direction={i % 2 === 0 ? "left" : "right"}>
@@ -154,6 +159,8 @@ export default function Services() {
                     <img
                       src={item.img}
                       alt={item.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     />
                   </div>

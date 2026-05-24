@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 // Primary WhatsApp number for inquiries (international format, no +)
 const WHATSAPP_NUMBER = "923058645051";
@@ -22,6 +23,10 @@ const formSchema = z.object({
 });
 
 export default function Contact() {
+  useDocumentMeta({
+    title: "Contact CHISHTI Aluminium & Cool Point — Islamabad",
+    description: "Get in touch with CHISHTI Aluminium & Cool Point for aluminium, glass, HVAC and interior consultations. Call 0305-8645051 / 0308-5346114 or visit our PWD Islamabad workshop.",
+  });
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -99,6 +104,9 @@ export default function Contact() {
                           <a href="tel:03058645051" className="hover:underline">0305-8645051</a>
                         </div>
                         <div className="text-lg font-medium">
+                          <a href="tel:03085346114" className="hover:underline">0308-5346114</a>
+                        </div>
+                        <div className="text-lg font-medium">
                           <a href="tel:03155385439" className="hover:underline">0315-5385439</a>
                         </div>
                       </div>
@@ -111,7 +119,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-1">Email Us</div>
-                      <div className="text-xl font-medium">
+                      <div className="text-base sm:text-lg md:text-xl font-medium break-all">
                         <a href="mailto:info@chishtialuminium.com" className="hover:underline">info@chishtialuminium.com</a>
                       </div>
                     </div>

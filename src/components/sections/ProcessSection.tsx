@@ -3,16 +3,16 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Local AC/HVAC Step Images
-import coolStep1 from "@/assets/Process — HVAC & Cooling/step-1 (1).jpeg";
-import coolStep2 from "@/assets/Process — HVAC & Cooling/step-2 (1).jpeg";
-import coolStep3 from "@/assets/Process — HVAC & Cooling/step-3 (1).jpeg";
-import coolStep4 from "@/assets/Process — HVAC & Cooling/step-4 (1).jpeg";
-import coolStep5 from "@/assets/Process — HVAC & Cooling/step-5 (1).jpeg";
+import coolStep1 from "@/assets/Process — HVAC & Cooling/step-1 (1).webp";
+import coolStep2 from "@/assets/Process — HVAC & Cooling/step-2 (1).webp";
+import coolStep3 from "@/assets/Process — HVAC & Cooling/step-3 (1).webp";
+import coolStep4 from "@/assets/Process — HVAC & Cooling/step-4 (1).webp";
+import coolStep5 from "@/assets/Process — HVAC & Cooling/step-5 (1).webp";
 
 // Local Aluminium & Glass Step Images
-import aluStep1 from "@/assets/ProcessAluminium& Glass/step-1 (1).jpeg";
-import aluStep2 from "@/assets/ProcessAluminium& Glass/step-2 (1).jpeg";
-import aluStep3 from "@/assets/ProcessAluminium& Glass/step-3 (1).jpeg";
+import aluStep1 from "@/assets/ProcessAluminium& Glass/step-1 (1).webp";
+import aluStep2 from "@/assets/ProcessAluminium& Glass/step-2 (1).webp";
+import aluStep3 from "@/assets/ProcessAluminium& Glass/step-3 (1).webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,7 +39,39 @@ function ProcessFlow({ label, heading, steps }: ProcessFlowProps) {
     const trigger = triggerRef.current;
     if (!section || !trigger) return;
 
+    // Disable expensive pinned scroll on mobile + when reduced-motion is preferred.
+    // On those, fall back to a lightweight in-view step auto-advance (every 3.5s while visible).
+    const mql = window.matchMedia("(max-width: 768px), (prefers-reduced-motion: reduce)");
+    const isLightMode = mql.matches;
     const totalSteps = steps.length;
+
+    if (isLightMode) {
+      let idx = 0;
+      let visible = false;
+      let timer: ReturnType<typeof setInterval> | null = null;
+
+      const io = new IntersectionObserver(
+        ([entry]) => {
+          visible = entry.isIntersecting;
+          if (visible && !timer) {
+            timer = setInterval(() => {
+              idx = (idx + 1) % totalSteps;
+              setActiveStep(idx);
+            }, 3500);
+          } else if (!visible && timer) {
+            clearInterval(timer);
+            timer = null;
+          }
+        },
+        { threshold: 0.4 }
+      );
+      io.observe(section);
+
+      return () => {
+        io.disconnect();
+        if (timer) clearInterval(timer);
+      };
+    }
 
     const st = ScrollTrigger.create({
       trigger: trigger,
@@ -89,6 +121,8 @@ function ProcessFlow({ label, heading, steps }: ProcessFlowProps) {
                   key={idx}
                   src={step.image}
                   alt={step.title}
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  decoding="async"
                   className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out"
                   style={{
                     opacity: activeStep === idx ? 1 : 0,

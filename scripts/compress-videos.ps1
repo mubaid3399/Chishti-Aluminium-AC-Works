@@ -52,8 +52,8 @@ if (-not (Test-Path $backupDir)) {
 }
 
 # --- 3. Compress each video ------------------------------------------
-$videos = Get-ChildItem -Path $projectDir -Filter "proj-vid-*.mp4" -File |
-          Where-Object { $_.DirectoryName -notlike "*_original-videos*" }
+$videos = Get-ChildItem -Path $projectDir -Filter "*.mp4" -File |
+          Where-Object { $_.DirectoryName -notlike "*_original-videos*" -and $_.Name -notlike "_tmp_*" }
 
 if ($videos.Count -eq 0) {
     Write-Host "No proj-vid-*.mp4 files found in $projectDir" -ForegroundColor Red
@@ -66,13 +66,14 @@ foreach ($v in $videos) {
     $backup    = Join-Path $backupDir $name
     $tempOut   = Join-Path $projectDir ("_tmp_" + $name)
 
-    # Backup original (only once)
-    if (-not (Test-Path $backup)) {
-        Write-Host "Backing up original: $name" -ForegroundColor Gray
-        Copy-Item $original $backup
-    } else {
-        Write-Host "Backup already exists, skipping backup of: $name" -ForegroundColor DarkGray
+    # Skip files that already have a backup (already compressed previously)
+    if (Test-Path $backup) {
+        Write-Host "Already compressed (backup exists), skipping: $name" -ForegroundColor DarkGray
+        continue
     }
+
+    Write-Host "Backing up original: $name" -ForegroundColor Gray
+    Copy-Item $original $backup
 
     Write-Host "`nCompressing $name ..." -ForegroundColor Green
     Write-Host "  Original size: $([math]::Round($v.Length/1MB, 2)) MB" -ForegroundColor Gray

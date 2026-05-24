@@ -14,6 +14,19 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
+    cssCodeSplit: true,
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Stable vendor chunks for long-term caching
+          "react-vendor": ["react", "react-dom", "wouter"],
+          "framer": ["framer-motion"],
+          "gsap": ["gsap"],
+          "icons": ["lucide-react", "react-icons"],
+        },
+      },
+    },
   },
   server: {
     port: 5173,

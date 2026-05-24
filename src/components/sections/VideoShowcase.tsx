@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import vid1 from "@/assets/project/proj-vid-1.mp4";
 import vid2 from "@/assets/project/proj-vid-2.mp4";
 import vid3 from "@/assets/project/proj-vid-3.mp4";
+import vidLayyah from "@/assets/project/layyah-bhkhr.mp4";
 
 type Video = { src: string; title: string; caption: string };
 
@@ -14,6 +15,7 @@ const videos: Video[] = [
   { src: vid1, title: "Glass Facade Install", caption: "On-site precision" },
   { src: vid2, title: "Aluminium Fabrication", caption: "Workshop to wall" },
   { src: vid3, title: "Project Walkthrough", caption: "Finished result" },
+  { src: vidLayyah, title: "Layyah \u2013 Bhakhar Residence", caption: "Double-glazed tempered glass install" },
 ];
 
 function PhoneVideoCard({ video, onOpen }: { video: Video; onOpen: () => void }) {
@@ -144,7 +146,7 @@ export function VideoShowcase() {
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
           {videos.map((v, i) => (
             <FadeIn key={i} delay={i * 0.15}>
               <PhoneVideoCard video={v} onOpen={() => setActiveIdx(i)} />

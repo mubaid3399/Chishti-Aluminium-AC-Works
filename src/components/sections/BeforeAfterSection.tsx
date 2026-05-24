@@ -1,12 +1,12 @@
 import { useState, useRef, MouseEvent, TouchEvent } from "react";
 
 // Local Before/After Images
-import officeBefore from "@/assets/before-after/office-before.jpeg";
-import officeAfter from "@/assets/before-after/office-after.jpeg";
-import acBefore from "@/assets/before-after/ac-before.jpeg";
-import acAfter from "@/assets/before-after/ac-after.jpeg";
-import wallBefore from "@/assets/before-after/wall-before.jpeg";
-import wallAfter from "@/assets/before-after/wall-after.jpeg";
+import officeBefore from "@/assets/before-after/office-before.webp";
+import officeAfter from "@/assets/before-after/office-after.webp";
+import acBefore from "@/assets/before-after/ac-before.webp";
+import acAfter from "@/assets/before-after/ac-after.webp";
+import wallBefore from "@/assets/before-after/wall-before.webp";
+import wallAfter from "@/assets/before-after/wall-after.webp";
 
 interface BeforeAfterItem {
   title: string;

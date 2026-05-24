@@ -1,18 +1,24 @@
 import { FadeIn } from "@/components/ui/fade-in";
-import { ArrowRight, MapPin, X, ChevronLeft, ChevronRight, Images } from "lucide-react";
+import { ArrowRight, MapPin, X, ChevronLeft, ChevronRight, Images, Play } from "lucide-react";
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
-import bahria1 from "@/assets/project/Baria enclave 14 no street  Duball glass with Jorgen bar tempered glass.jpeg";
-import bahria2 from "@/assets/project/Baria enclave 14 no street  Duball glass with Jorgen bar tempered glass-2.jpeg";
-import layyah1 from "@/assets/project/Layyah Bhakhar Duble glass with tempered.jpeg";
-import layyah2 from "@/assets/project/Layyah Bhakhar Duble glass with tempered-2.jpeg";
-import layyah3 from "@/assets/project/Layyah Bhakhar Duble glass with tempered-3.jpeg";
-import layyah4 from "@/assets/project/Layyah Bhakhar Duble glass with tempered-4.jpeg";
-import pwdImg from "@/assets/project/Pwd Korang town.jpeg";
-import g14Img from "@/assets/project/Sector G14 skylight 12mm glass.jpeg";
-import proj9 from "@/assets/project/proj-9.jpeg";
-import proj10 from "@/assets/project/proj-10.jpeg";
+import bahria1 from "@/assets/project/Baria enclave 14 no street  Duball glass with Jorgen bar tempered glass.webp";
+import bahria2 from "@/assets/project/Baria enclave 14 no street  Duball glass with Jorgen bar tempered glass-2.webp";
+import layyah1 from "@/assets/project/Layyah Bhakhar Duble glass with tempered.webp";
+import layyah2 from "@/assets/project/Layyah Bhakhar Duble glass with tempered-2.webp";
+import layyah3 from "@/assets/project/Layyah Bhakhar Duble glass with tempered-3.webp";
+import layyah4 from "@/assets/project/Layyah Bhakhar Duble glass with tempered-4.webp";
+import pwdImg from "@/assets/project/Pwd Korang town.webp";
+import g14Img from "@/assets/project/Sector G14 skylight 12mm glass.webp";
+import proj9 from "@/assets/project/proj-9.webp";
+import proj10 from "@/assets/project/proj-10.webp";
+import layyahVideo from "@/assets/project/layyah-bhkhr.mp4";
+
+type MediaItem =
+  | { type: "image"; src: string }
+  | { type: "video"; src: string };
 
 type Project = {
   id: string;
@@ -21,6 +27,7 @@ type Project = {
   description: string;
   category: string;
   images: string[];
+  videos?: string[];
 };
 
 const projects: Project[] = [
@@ -41,6 +48,7 @@ const projects: Project[] = [
       "Premium double-glazed windows with tempered glass installation across a full residential build. Delivered with precision sealing and lasting structural integrity.",
     category: "Residential",
     images: [layyah1, layyah2, layyah3, layyah4],
+    videos: [layyahVideo],
   },
   {
     id: "pwd",
@@ -62,10 +70,10 @@ const projects: Project[] = [
   },
   {
     id: "proj-9",
-    title: "Commercial Tower \u2013 Structural Glazing",
-    location: "Commercial District, Islamabad",
+    title: "Pakland Tower \u2013 AC Pipe Fitting",
+    location: "Blue Area, Pakland Tower, Islamabad",
     description:
-      "Full-height structural glazing curtain wall on a multi-storey commercial tower \u2014 installed with safety scaffolding and precision alignment.",
+      "Complete HVAC pipe fitting and installation across a multi-storey commercial tower \u2014 executed with safety scaffolding, precision routing, and clean exterior finishing for long-term performance.",
     category: "Commercial",
     images: [proj9],
   },
@@ -83,6 +91,10 @@ const projects: Project[] = [
 const categories = ["All", "Residential", "Commercial", "Interior", "Skylight"];
 
 export default function Projects() {
+  useDocumentMeta({
+    title: "Projects — Premium Installations Across Pakistan | CHISHTI",
+    description: "A curated portfolio of CHISHTI's commercial and residential installations — structural glazing, curtain walls, HVAC fittings, frameless glass and architectural aluminium across Pakistan.",
+  });
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [carouselIdx, setCarouselIdx] = useState(0);
@@ -92,16 +104,20 @@ export default function Projects() {
       ? projects
       : projects.filter((p) => p.category === activeCategory);
 
+  const getMedia = (p: Project): MediaItem[] => [
+    ...(p.videos?.map((src) => ({ type: "video" as const, src })) ?? []),
+    ...p.images.map((src) => ({ type: "image" as const, src })),
+  ];
+
   useEffect(() => {
     if (!activeProject) return;
+    const mediaLen = getMedia(activeProject).length;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setActiveProject(null);
       if (e.key === "ArrowRight")
-        setCarouselIdx((i) => (i + 1) % activeProject.images.length);
+        setCarouselIdx((i) => (i + 1) % mediaLen);
       if (e.key === "ArrowLeft")
-        setCarouselIdx(
-          (i) => (i - 1 + activeProject.images.length) % activeProject.images.length
-        );
+        setCarouselIdx((i) => (i - 1 + mediaLen) % mediaLen);
     };
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
@@ -173,10 +189,16 @@ export default function Projects() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0 group-hover:from-black/80 transition-all" />
-                  {proj.images.length > 1 && (
+                  {(proj.videos?.length ?? 0) > 0 && (
+                    <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-bold text-white flex items-center gap-1.5">
+                      <Play className="w-3 h-3 fill-white" />
+                      Video
+                    </div>
+                  )}
+                  {proj.images.length + (proj.videos?.length ?? 0) > 1 && (
                     <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-bold text-black flex items-center gap-1.5">
                       <Images className="w-3.5 h-3.5" />
-                      {proj.images.length}
+                      {proj.images.length + (proj.videos?.length ?? 0)}
                     </div>
                   )}
                   <div className="absolute bottom-0 left-0 right-0 p-5 flex items-center justify-between">
@@ -230,69 +252,97 @@ export default function Projects() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Carousel */}
-            <div className="relative flex-1 w-full">
-              <div className="relative rounded-2xl overflow-hidden bg-black/60 flex items-center justify-center min-h-[300px]">
-                <img
-                  key={carouselIdx}
-                  src={activeProject.images[carouselIdx]}
-                  alt={`${activeProject.title} ${carouselIdx + 1}`}
-                  className="max-w-full max-h-[75vh] object-contain"
-                />
-              </div>
-
-              {activeProject.images.length > 1 && (
-                <>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setCarouselIdx(
-                        (i) =>
-                          (i - 1 + activeProject.images.length) %
-                          activeProject.images.length
-                      )
-                    }
-                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm rounded-full p-3 hover:bg-white transition-colors"
-                    aria-label="Previous"
-                  >
-                    <ChevronLeft className="w-5 h-5 text-black" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setCarouselIdx(
-                        (i) => (i + 1) % activeProject.images.length
-                      )
-                    }
-                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm rounded-full p-3 hover:bg-white transition-colors"
-                    aria-label="Next"
-                  >
-                    <ChevronRight className="w-5 h-5 text-black" />
-                  </button>
-
-                  {/* Thumbnails */}
-                  <div className="flex gap-2 mt-4 justify-center flex-wrap">
-                    {activeProject.images.map((img, idx) => (
-                      <button
-                        key={idx}
-                        type="button"
-                        onClick={() => setCarouselIdx(idx)}
-                        className={`w-16 h-16 rounded-md overflow-hidden border-2 transition-all ${
-                          idx === carouselIdx
-                            ? "border-white scale-105"
-                            : "border-white/30 opacity-60 hover:opacity-100"
-                        }`}
-                      >
-                        <img
-                          src={img}
-                          alt={`thumbnail ${idx + 1}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </button>
-                    ))}
+            {(() => {
+              const media = getMedia(activeProject);
+              const current = media[carouselIdx];
+              return (
+                <div className="relative flex-1 w-full">
+                  <div className="relative rounded-2xl overflow-hidden bg-black/60 flex items-center justify-center min-h-[300px]">
+                    {current.type === "video" ? (
+                      <video
+                        key={carouselIdx}
+                        src={current.src}
+                        className="max-w-full max-h-[75vh] object-contain"
+                        controls
+                        autoPlay
+                        playsInline
+                      />
+                    ) : (
+                      <img
+                        key={carouselIdx}
+                        src={current.src}
+                        alt={`${activeProject.title} ${carouselIdx + 1}`}
+                        className="max-w-full max-h-[75vh] object-contain"
+                      />
+                    )}
                   </div>
-                </>
-              )}
-            </div>
+
+                  {media.length > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setCarouselIdx(
+                            (i) => (i - 1 + media.length) % media.length
+                          )
+                        }
+                        className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm rounded-full p-3 hover:bg-white transition-colors"
+                        aria-label="Previous"
+                      >
+                        <ChevronLeft className="w-5 h-5 text-black" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setCarouselIdx((i) => (i + 1) % media.length)
+                        }
+                        className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm rounded-full p-3 hover:bg-white transition-colors"
+                        aria-label="Next"
+                      >
+                        <ChevronRight className="w-5 h-5 text-black" />
+                      </button>
+
+                      {/* Thumbnails */}
+                      <div className="flex gap-2 mt-4 justify-center flex-wrap">
+                        {media.map((m, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => setCarouselIdx(idx)}
+                            className={`relative w-16 h-16 rounded-md overflow-hidden border-2 transition-all ${
+                              idx === carouselIdx
+                                ? "border-white scale-105"
+                                : "border-white/30 opacity-60 hover:opacity-100"
+                            }`}
+                          >
+                            {m.type === "video" ? (
+                              <>
+                                <video
+                                  src={m.src}
+                                  className="w-full h-full object-cover"
+                                  muted
+                                  playsInline
+                                  preload="metadata"
+                                />
+                                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                                  <Play className="w-5 h-5 text-white fill-white" />
+                                </div>
+                              </>
+                            ) : (
+                              <img
+                                src={m.src}
+                                alt={`thumbnail ${idx + 1}`}
+                                className="w-full h-full object-cover"
+                              />
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              );
+            })()}
 
             {/* Details */}
             <div className="lg:w-96 text-white flex-shrink-0">

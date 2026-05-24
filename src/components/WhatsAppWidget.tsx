@@ -9,32 +9,43 @@ interface WhatsAppOption {
 
 const options: WhatsAppOption[] = [
   { number: "923058645051", label: "" },
-  { number: "923155385439", label: "" },
+  { number: "923085346114", label: "" },
 ];
 
 const message = "Hello, I am interested in your premium aluminium, glass, and cooling solutions.";
 
 export function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const [rotation, setRotation] = useState(0);
   const lastScrollY = useRef(0);
+  const rotationRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
   const widgetRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
+  // Scroll-driven rotation — no React re-renders, GPU-only transform writes
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const difference = currentScrollY - lastScrollY.current;
-
-      if (Math.abs(difference) > 2) {
-        const direction = difference > 0 ? 1 : -1;
-        setRotation((prev) => prev + direction * 15);
-      }
-
-      lastScrollY.current = currentScrollY;
+      if (rafRef.current !== null) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = null;
+        const currentScrollY = window.scrollY;
+        const difference = currentScrollY - lastScrollY.current;
+        if (Math.abs(difference) > 2) {
+          const direction = difference > 0 ? 1 : -1;
+          rotationRef.current += direction * 15;
+          if (buttonRef.current) {
+            buttonRef.current.style.transform = `rotate(${rotationRef.current}deg)`;
+          }
+        }
+        lastScrollY.current = currentScrollY;
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -75,9 +86,9 @@ export function WhatsAppWidget() {
 
       {/* Main Toggle Button */}
       <button
+        ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 ease-out group"
-        style={{ transform: `rotate(${rotation}deg)` }}
         aria-label="Contact us on WhatsApp"
       >
         {/* Pulse Animation Effect */}

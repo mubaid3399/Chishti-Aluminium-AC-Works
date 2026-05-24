@@ -1,7 +1,12 @@
 import { FadeIn } from "@/components/ui/fade-in";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 export default function FAQ() {
+  useDocumentMeta({
+    title: "FAQ — Aluminium, Glass & HVAC Questions Answered | CHISHTI",
+    description: "Answers to common questions about CHISHTI's aluminium fabrication, glass installation, HVAC servicing, project timelines, and warranties.",
+  });
   const faqs = [
     {
       q: "What types of aluminium systems do you install?",

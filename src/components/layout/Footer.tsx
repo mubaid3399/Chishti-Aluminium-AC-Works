@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import { Link } from "wouter";
 import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
 
@@ -84,6 +84,13 @@ export function Footer() {
             <li><a href="tel:03058645051" className="hover:text-white transition-colors">0305-8645051</a></li>
             <li><a href="mailto:info@chishtialuminium.com" className="hover:text-white transition-colors">info@chishtialuminium.com</a></li>
             <li>P.W.D Street Number 1, Block A Sector A PWD Society<br/>Islamabad, 43000, Pakistan</li>
+            <li className="flex items-start gap-2 pt-2 border-t border-white/10 mt-2">
+              <Clock className="w-4 h-4 mt-1 flex-shrink-0" />
+              <span>
+                <span className="block text-white font-semibold">Open 24 Hours</span>
+                <span className="block text-xs uppercase tracking-wider mt-0.5">7 Days a Week</span>
+              </span>
+            </li>
           </ul>
         </div>
       </div>

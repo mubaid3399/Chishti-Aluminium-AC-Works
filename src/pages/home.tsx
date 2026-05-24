@@ -1,40 +1,37 @@
 import { FadeIn } from "@/components/ui/fade-in";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Link } from "wouter";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ProcessSection } from "@/components/sections/ProcessSection";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { BeforeAfterSection } from "@/components/sections/BeforeAfterSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { HomeFAQSection } from "@/components/sections/HomeFAQSection";
 import { VideoShowcase } from "@/components/sections/VideoShowcase";
 
 // Brand Logos
-import b1 from "@/assets/brands-logo/pngegg.png";
-import b2 from "@/assets/brands-logo/pngegg (1).png";
-import b3 from "@/assets/brands-logo/pngegg (2).png";
-import b4 from "@/assets/brands-logo/pngegg (3).png";
-import b5 from "@/assets/brands-logo/pngegg (4).png";
-import b6 from "@/assets/brands-logo/pngegg (5).png";
-import b7 from "@/assets/brands-logo/pngegg (6).png";
-import b8 from "@/assets/brands-logo/pngegg (7).png";
+import b1 from "@/assets/brands-logo/pngegg.webp";
+import b2 from "@/assets/brands-logo/pngegg (1).webp";
+import b3 from "@/assets/brands-logo/pngegg (2).webp";
+import b4 from "@/assets/brands-logo/pngegg (3).webp";
+import b5 from "@/assets/brands-logo/pngegg (4).webp";
+import b6 from "@/assets/brands-logo/pngegg (5).webp";
+import b7 from "@/assets/brands-logo/pngegg (6).webp";
+import b8 from "@/assets/brands-logo/pngegg (7).webp";
 
-// Premium Web-Optimized Unsplash Images
-const heroImg = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=72";
+// Premium Web-Optimized Unsplash Images (non-LCP only)
 const aboutImg = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=1000&q=72";
 const srvResImg = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=72";
 const srvComImg = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=72";
 const srvRepImg = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=72";
 
-// Local Hero Background Images
-import heroB1 from "@/assets/hero-img/heroB-1 (1).png";
-import heroB2 from "@/assets/hero-img/heroB-2 (1).png";
+// Local Hero Background Images (LCP — kept local for fastest paint)
+import heroB1 from "@/assets/hero-img/heroB-1 (1).webp";
+import heroB2 from "@/assets/hero-img/heroB-2 (1).webp";
 
-const heroBackgrounds = [
-  heroImg,
-  heroB1,
-  heroB2
-];
+const heroBackgrounds = [heroB1, heroB2];
 
 // Professional Slot-Machine / Clock Rolling Digit Counter
 function RollingDigit({ value, hoverKey }: { value: string; hoverKey: number }) {
@@ -101,6 +98,10 @@ function RollingDigit({ value, hoverKey }: { value: string; hoverKey: number }) 
 }
 
 export default function Home() {
+  useDocumentMeta({
+    title: "CHISHTI Aluminium & Cool Point — Premium Aluminium, Glass & HVAC in Islamabad",
+    description: "Premium aluminium systems, architectural glass installations, and HVAC cooling solutions for commercial and residential spaces in Islamabad and across Pakistan.",
+  });
   const [hoverKeys, setHoverKeys] = useState([0, 0, 0, 0]);
   const [bgIndex, setBgIndex] = useState(0);
 
@@ -125,14 +126,15 @@ export default function Home() {
       <section className="relative h-screen min-h-[700px] w-full flex items-end pb-24 lg:pb-32 px-6 md:px-16 overflow-hidden">
         <div className="absolute inset-0 z-0">
           {heroBackgrounds.map((bgSrc, idx) => (
-            <img 
+            <img
               key={idx}
-              src={bgSrc} 
-              alt="CHISHTI Aluminium & Cool Point — Premium Industrial Solutions" 
+              src={bgSrc}
+              alt="CHISHTI Aluminium & Cool Point — Premium Industrial Solutions"
               className="absolute inset-0 w-full h-full object-cover object-center scale-105 transform-gpu transition-opacity duration-1000 ease-in-out"
-              style={{
-                opacity: bgIndex === idx ? 1 : 0,
-              }}
+              style={{ opacity: bgIndex === idx ? 1 : 0 }}
+              fetchPriority={idx === 0 ? "high" : "low"}
+              loading={idx === 0 ? "eager" : "lazy"}
+              decoding="async"
             />
           ))}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
@@ -193,7 +195,7 @@ export default function Home() {
           </div>
           <FadeIn direction="left" delay={0.2} className="relative">
             <div className="rounded-2xl overflow-hidden aspect-[4/5] relative">
-              <img src={aboutImg} alt="CHISHTI precision aluminium fabrication" className="w-full h-full object-cover" />
+              <img src={aboutImg} alt="CHISHTI precision aluminium fabrication" loading="lazy" decoding="async" className="w-full h-full object-cover" />
             </div>
           </FadeIn>
         </div>
@@ -210,6 +212,8 @@ export default function Home() {
                   <img
                     src={logo}
                     alt={`Partner Brand Logo ${idx + 1}`}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-contain grayscale opacity-45 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
@@ -220,6 +224,9 @@ export default function Home() {
                   <img
                     src={logo}
                     alt={`Partner Brand Logo Duplicate ${idx + 1}`}
+                    loading="lazy"
+                    decoding="async"
+                    aria-hidden="true"
                     className="h-full w-full object-contain grayscale opacity-45 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
@@ -248,6 +255,8 @@ export default function Home() {
               <img 
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=72" 
                 alt="CHISHTI Premium Architectural Glass and Aluminium Facade" 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-center scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/45" />
@@ -310,6 +319,8 @@ export default function Home() {
             <img 
               src={srvResImg} 
               alt="Aluminium & Glass Systems" 
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
@@ -334,6 +345,8 @@ export default function Home() {
             <img 
               src={srvComImg} 
               alt="HVAC & Cooling Solutions" 
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -355,6 +368,8 @@ export default function Home() {
             <img 
               src={srvRepImg} 
               alt="Commercial & Interior Solutions" 
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -381,6 +396,9 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      {/* Why Choose Us */}
+      <WhyChooseUs />
 
       {/* Video Showcase — Real Job-Site Reels */}
       <VideoShowcase />

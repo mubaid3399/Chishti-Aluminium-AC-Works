@@ -1,14 +1,16 @@
 import { FadeIn } from "@/components/ui/fade-in";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
+import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 // Brand Logos
-import b1 from "@/assets/brands-logo/pngegg.png";
-import b2 from "@/assets/brands-logo/pngegg (1).png";
-import b3 from "@/assets/brands-logo/pngegg (2).png";
-import b4 from "@/assets/brands-logo/pngegg (3).png";
-import b5 from "@/assets/brands-logo/pngegg (4).png";
-import b6 from "@/assets/brands-logo/pngegg (5).png";
-import b7 from "@/assets/brands-logo/pngegg (6).png";
-import b8 from "@/assets/brands-logo/pngegg (7).png";
+import b1 from "@/assets/brands-logo/pngegg.webp";
+import b2 from "@/assets/brands-logo/pngegg (1).webp";
+import b3 from "@/assets/brands-logo/pngegg (2).webp";
+import b4 from "@/assets/brands-logo/pngegg (3).webp";
+import b5 from "@/assets/brands-logo/pngegg (4).webp";
+import b6 from "@/assets/brands-logo/pngegg (5).webp";
+import b7 from "@/assets/brands-logo/pngegg (6).webp";
+import b8 from "@/assets/brands-logo/pngegg (7).webp";
 
 // Premium Web-Optimized Unsplash Images
 const ab1 = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&h=1000&q=72";
@@ -17,6 +19,10 @@ const ab3 = "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=f
 const ab4 = "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&h=1000&q=72";
 
 export default function About() {
+  useDocumentMeta({
+    title: "About CHISHTI — Engineering Excellence Since Day One",
+    description: "Learn the story behind CHISHTI Aluminium & Cool Point — a premium architectural solutions firm specialising in aluminium fabrication, glass systems, and HVAC installations.",
+  });
   return (
     <div className="min-h-screen bg-white pt-32">
       {/* Hero */}
@@ -37,25 +43,25 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <FadeIn delay={0.1} className="lg:mt-12">
             <div className="rounded-2xl overflow-hidden aspect-[4/5]">
-              <img src={ab1} alt="Aluminium fabrication craftsman" className="w-full h-full object-cover" />
+              <img src={ab1} alt="Aluminium fabrication craftsman" loading="lazy" decoding="async" className="w-full h-full object-cover" />
             </div>
             <div className="mt-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Precision Fabrication</div>
           </FadeIn>
           <FadeIn delay={0.2}>
             <div className="rounded-2xl overflow-hidden aspect-[4/5]">
-              <img src={ab2} alt="Premium aluminium materials" className="w-full h-full object-cover" />
+              <img src={ab2} alt="Premium aluminium materials" loading="lazy" decoding="async" className="w-full h-full object-cover" />
             </div>
             <div className="mt-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Premium Materials</div>
           </FadeIn>
           <FadeIn delay={0.3} className="lg:mt-24">
             <div className="rounded-2xl overflow-hidden aspect-[4/5]">
-              <img src={ab3} alt="Architectural measurement" className="w-full h-full object-cover" />
+              <img src={ab3} alt="Architectural measurement" loading="lazy" decoding="async" className="w-full h-full object-cover" />
             </div>
             <div className="mt-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Expert Engineering</div>
           </FadeIn>
           <FadeIn delay={0.4} className="lg:mt-8">
             <div className="rounded-2xl overflow-hidden aspect-[4/5]">
-              <img src={ab4} alt="Modern glass installation" className="w-full h-full object-cover" />
+              <img src={ab4} alt="Modern glass installation" loading="lazy" decoding="async" className="w-full h-full object-cover" />
             </div>
             <div className="mt-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Modern Systems</div>
           </FadeIn>
@@ -73,6 +79,8 @@ export default function About() {
                   <img
                     src={logo}
                     alt={`Partner Brand Logo ${idx + 1}`}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-contain grayscale opacity-45 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
@@ -83,6 +91,9 @@ export default function About() {
                   <img
                     src={logo}
                     alt={`Partner Brand Logo Duplicate ${idx + 1}`}
+                    loading="lazy"
+                    decoding="async"
+                    aria-hidden="true"
                     className="h-full w-full object-contain grayscale opacity-45 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
@@ -111,6 +122,9 @@ export default function About() {
             </div>
           </FadeIn>
         </div>
+
+      {/* Why Choose Us */}
+      <WhyChooseUs />
       </section>
     </div>
   );
