@@ -1,6 +1,7 @@
 import { ArrowRight, Clock } from "lucide-react";
 import { Link } from "wouter";
 import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
+import { openCookieSettings } from "@/components/CookieConsent";
 
 export function Footer() {
   return (
@@ -33,8 +34,12 @@ export function Footer() {
             <span className="font-serif font-bold text-2xl uppercase">Chishti</span>
           </div>
           <p className="text-gray-500 max-w-sm">
-            Premium aluminium systems, architectural glass solutions, and industrial cooling — engineered for permanence. Serving commercial and residential clients with uncompromising quality.
+            Premium aluminium windows, architectural glass, UPVC and 24/7 AC / HVAC services across Islamabad, Rawalpindi and nearby sectors — engineered for permanence and trusted by homeowners, architects and businesses.
           </p>
+          <div className="mt-5 text-xs text-gray-500 leading-relaxed max-w-sm">
+            <span className="block text-white/80 font-bold uppercase tracking-widest text-[10px] mb-1.5">Service Areas</span>
+            Islamabad · Rawalpindi · DHA · Bahria Town · Gulberg Greens · PWD · G-13 · F-10 · Blue Area · E-11 · B-17 · Saddar · Chaklala · Satellite Town · Bahria Phase 7/8
+          </div>
           <div className="flex gap-4 mt-6">
             <a 
               href="https://web.facebook.com/chishti.aluminium" 
@@ -82,7 +87,7 @@ export function Footer() {
           <ul className="flex flex-col gap-4 text-gray-400">
             <li><a href="tel:0515975105" className="hover:text-white transition-colors">051-5975105</a></li>
             <li><a href="tel:03058645051" className="hover:text-white transition-colors">0305-8645051</a></li>
-            <li><a href="mailto:info@chishtialuminium.com" className="hover:text-white transition-colors">info@chishtialuminium.com</a></li>
+            <li><a href="mailto:info@chishtiworks.com" className="hover:text-white transition-colors">info@chishtiworks.com</a></li>
             <li>P.W.D Street Number 1, Block A Sector A PWD Society<br/>Islamabad, 43000, Pakistan</li>
             <li className="flex items-start gap-2 pt-2 border-t border-white/10 mt-2">
               <Clock className="w-4 h-4 mt-1 flex-shrink-0" />
@@ -98,8 +103,15 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-16 py-8 border-t border-white/10 text-center md:text-left text-gray-600 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
         <p>© {new Date().getFullYear()} CHISHTI Aluminium & Cool Point. All rights reserved.</p>
         <div className="flex gap-6">
-          <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-          <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+          <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+          <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+          <button
+            type="button"
+            onClick={() => openCookieSettings()}
+            className="hover:text-white transition-colors"
+          >
+            Cookie Preferences
+          </button>
         </div>
       </div>
     </footer>

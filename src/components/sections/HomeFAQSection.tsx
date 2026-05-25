@@ -8,28 +8,28 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    q: "How long does an aluminium installation take?",
-    a: "Timelines vary by project size. A standard window or door installation takes 1-2 days. Custom office partitions and glass cabin systems typically take 3-5 days. Full commercial facades are quoted with precise schedules during initial design phases.",
+    q: "Which areas do you serve in Islamabad and Rawalpindi?",
+    a: "We work daily across Islamabad (DHA, Bahria Town, Gulberg Greens, PWD, G-13, F-10, Blue Area, E-11) and Rawalpindi (Saddar, Chaklala, Satellite Town, Bahria Phase 7/8). Larger projects across Pakistan are handled on request.",
   },
   {
-    q: "What types of aluminium profiles do you offer?",
-    a: "We offer premium architectural-grade aluminium profiles with various finishes, including custom powder coating in any RAL color, anodizing, and wood-grain sublimation. All profiles are engineered for durability, wind resistance, and modern aesthetics.",
+    q: "How long does an aluminium window or door installation take?",
+    a: "Timelines vary by project size. A standard aluminium window or door installation in Islamabad or Rawalpindi takes 1–2 days. Custom office glass partitions and shower cabins typically take 3–5 days. Full commercial facades are scheduled after the on-site survey.",
   },
   {
-    q: "Do you provide warranties on your services?",
-    a: "Yes. All our installations include a comprehensive workmanship warranty. Additionally, materials like premium profiles, glass units, and cooling compressors carry their respective manufacturer-backed warranties.",
+    q: "What aluminium profiles and finishes are available?",
+    a: "We supply architectural-grade aluminium profiles with custom powder coating in any RAL colour, anodised finishes and wood-grain sublimation — engineered for durability and wind resistance suited to twin-city weather.",
   },
   {
-    q: "How do I know if my AC needs repairs or full replacement?",
-    a: "Minor cooling issues, localized leaks, or small electrical faults are easily repaired. However, if your system is over 10-12 years old, requires frequent repairs, or uses outdated refrigerant, a replacement with a modern energy-efficient system is highly recommended.",
+    q: "Do you provide a written warranty?",
+    a: "Yes. Every installation includes a written workmanship warranty. Aluminium profiles, tempered glass units and AC compressors also carry their original manufacturer warranties.",
   },
   {
-    q: "Can I schedule an on-site consultation online?",
-    a: "Absolutely. You can schedule a site visit by using our online consultation form or contacting us via WhatsApp/call. Our engineering team will visit your site, take precise measurements, and provide a detailed blueprint and quote.",
+    q: "Should I repair or replace my old AC?",
+    a: "Minor leaks or small electrical faults are easily repaired. If your unit is 10+ years old, needs frequent gas top-ups or runs on outdated refrigerant, a modern inverter replacement usually pays for itself in lower bills.",
   },
   {
-    q: "Do you handle emergency HVAC or glass repairs?",
-    a: "Yes, we handle emergency service calls for both commercial and residential projects — including critical refrigeration breakdowns, commercial AC failure, or broken storefront glass replacement.",
+    q: "Can I book a free site visit in Islamabad or Rawalpindi?",
+    a: "Yes. Book via WhatsApp, our contact form or a quick call. Our engineering team will visit your site, take precise measurements and share a detailed blueprint and itemised quote — at no cost.",
   },
 ];
 

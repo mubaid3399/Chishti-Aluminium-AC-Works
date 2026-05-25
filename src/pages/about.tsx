@@ -20,8 +20,9 @@ const ab4 = "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=f
 
 export default function About() {
   useDocumentMeta({
-    title: "About CHISHTI — Engineering Excellence Since Day One",
-    description: "Learn the story behind CHISHTI Aluminium & Cool Point — a premium architectural solutions firm specialising in aluminium fabrication, glass systems, and HVAC installations.",
+    title: "About CHISHTI — Aluminium, Glass & HVAC Specialists in Islamabad & Rawalpindi",
+    description: "CHISHTI Aluminium & Cool Point is a trusted Islamabad & Rawalpindi contractor for aluminium fabrication, architectural glass, UPVC and HVAC systems — engineered for residential, commercial and industrial projects across Pakistan.",
+    path: "/about",
   });
   return (
     <div className="min-h-screen bg-white pt-32">
@@ -29,11 +30,11 @@ export default function About() {
       <section className="px-6 md:px-16 py-20 max-w-7xl mx-auto text-center">
         <FadeIn>
           <div className="uppercase tracking-[0.2em] text-sm text-gray-500 font-bold mb-6">About CHISHTI</div>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-[80px] font-bold leading-[1.05] tracking-tight max-w-4xl mx-auto mb-10">
-            Engineering Excellence Since Day One
+          <h1 className="font-serif text-[clamp(1.875rem,7vw,5rem)] md:text-6xl lg:text-7xl xl:text-[80px] font-bold leading-[1.1] tracking-tight max-w-4xl mx-auto mb-10 break-words">
+            Trusted Aluminium, Glass & HVAC Specialists in Islamabad
           </h1>
           <p className="text-gray-600 text-xl max-w-2xl mx-auto">
-            We don't just install aluminium and glass. We engineer complete architectural systems designed to transform modern spaces with precision, durability, and visual elegance.
+            We don't just install aluminium and glass. We engineer complete architectural and cooling systems for homes, offices and commercial projects across Islamabad, Rawalpindi and nearby sectors — with precision, durability and visual elegance.
           </p>
         </FadeIn>
       </section>
@@ -111,13 +112,13 @@ export default function About() {
             <h2 className="font-serif text-4xl md:text-5xl font-bold mb-8">Our Story</h2>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                CHISHTI Aluminium & Cool Point was founded with a singular vision: to bring industrial-grade precision and architectural beauty to every aluminium, glass, and cooling project we undertake. What started as a dedicated aluminium workshop has grown into a full-service architectural solutions company.
+                CHISHTI Aluminium & Cool Point was founded in Islamabad with a singular vision: to bring industrial-grade precision and architectural beauty to every aluminium, glass and cooling project we undertake. What started as a dedicated aluminium workshop in PWD has grown into a full-service architectural solutions company serving the twin cities.
               </p>
               <p>
-                Today, we serve commercial developers, residential architects, and discerning homeowners who demand excellence. Our team comprises skilled fabricators, HVAC engineers, and installation specialists — each trained in advanced techniques for curtain wall systems, frameless glass, precision aluminium work, and complete cooling infrastructure.
+                Today, we work with commercial developers, residential architects and discerning homeowners across Islamabad, Rawalpindi, Bahria Town, DHA, Gulberg Greens, Blue Area and beyond. Our team brings together skilled aluminium fabricators, HVAC engineers and installation specialists — each trained in curtain-wall systems, frameless glass, UPVC, precision aluminium work and complete cooling infrastructure.
               </p>
               <p>
-                We believe every space deserves systems that perform flawlessly and look exceptional. From corporate tower facades to intimate home interiors, CHISHTI delivers solutions that stand the test of time.
+                We believe every space deserves systems that perform flawlessly and look exceptional. From corporate tower facades on Jinnah Avenue to family homes in Bahria Enclave, CHISHTI delivers solutions that stand the test of time — backed by clear pricing, written warranties and 24/7 service support.
               </p>
             </div>
           </FadeIn>

@@ -27,9 +27,10 @@ interface ProcessFlowProps {
   label: string;
   heading: string;
   steps: ProcessStep[];
+  reversed?: boolean;
 }
 
-function ProcessFlow({ label, heading, steps }: ProcessFlowProps) {
+function ProcessFlow({ label, heading, steps, reversed = false }: ProcessFlowProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const [activeStep, setActiveStep] = useState(0);
@@ -112,10 +113,10 @@ function ProcessFlow({ label, heading, steps }: ProcessFlowProps) {
             </h2>
           </div>
 
-          {/* Process Content: Image Left, Text Right (stacked on mobile) */}
+          {/* Process Content: zig-zag layout — image / text positions alternate per flow (stacked on mobile) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-10 items-center flex-1 min-h-0">
-            {/* Left: Image */}
-            <div className="relative rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 h-[30vh] sm:h-[35vh] lg:h-auto lg:aspect-[4/3] lg:max-h-[50vh]">
+            {/* Image */}
+            <div className={`relative rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 h-[30vh] sm:h-[35vh] lg:h-auto lg:aspect-[4/3] lg:max-h-[50vh] ${reversed ? "lg:order-2" : "lg:order-1"}`}>
               {steps.map((step, idx) => (
                 <img
                   key={idx}
@@ -132,8 +133,8 @@ function ProcessFlow({ label, heading, steps }: ProcessFlowProps) {
               ))}
             </div>
 
-            {/* Right: Step Text */}
-            <div className="flex flex-col">
+            {/* Step Text */}
+            <div className={`flex flex-col ${reversed ? "lg:order-1" : "lg:order-2"}`}>
               <div className="relative h-[140px] sm:h-[160px] md:h-[220px]">
                 {steps.map((step, idx) => (
                   <div
@@ -280,6 +281,7 @@ export function ProcessSection() {
         label="Process — Aluminium & Glass"
         heading="Precision-engineered installations — from initial consultation to flawless architectural delivery."
         steps={aluminiumSteps}
+        reversed
       />
     </>
   );

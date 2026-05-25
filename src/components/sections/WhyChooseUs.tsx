@@ -40,7 +40,7 @@ export function WhyChooseUs() {
             Built On Precision. Backed By Trust.
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto mt-6">
-            Four reasons clients across Pakistan choose CHISHTI for their aluminium, glass, and cooling projects.
+            Four reasons homeowners, architects and businesses across Islamabad and Rawalpindi choose CHISHTI for their aluminium, glass and AC / HVAC projects.
           </p>
         </FadeIn>
 

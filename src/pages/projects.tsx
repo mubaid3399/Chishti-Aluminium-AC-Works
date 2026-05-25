@@ -92,8 +92,9 @@ const categories = ["All", "Residential", "Commercial", "Interior", "Skylight"];
 
 export default function Projects() {
   useDocumentMeta({
-    title: "Projects — Premium Installations Across Pakistan | CHISHTI",
-    description: "A curated portfolio of CHISHTI's commercial and residential installations — structural glazing, curtain walls, HVAC fittings, frameless glass and architectural aluminium across Pakistan.",
+    path: "/projects",
+    title: "Projects — Aluminium, Glass & HVAC Installations in Islamabad, Rawalpindi & Pakistan | CHISHTI",
+    description: "See CHISHTI's recent work across Bahria Enclave, DHA, PWD, G-14, Blue Area & beyond — curtain walls, double-glazed windows, glass partitions, HVAC piping and architectural aluminium.",
   });
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeProject, setActiveProject] = useState<Project | null>(null);

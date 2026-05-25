@@ -24,8 +24,9 @@ const formSchema = z.object({
 
 export default function Contact() {
   useDocumentMeta({
-    title: "Contact CHISHTI Aluminium & Cool Point — Islamabad",
-    description: "Get in touch with CHISHTI Aluminium & Cool Point for aluminium, glass, HVAC and interior consultations. Call 0305-8645051 / 0308-5346114 or visit our PWD Islamabad workshop.",
+    title: "Contact CHISHTI — Aluminium, Glass & AC Quote in Islamabad / Rawalpindi",
+    description: "Request a free site visit & quote for aluminium, glass, UPVC, AC and HVAC work in Islamabad, Rawalpindi & nearby sectors. Call 0305-8645051 / 0308-5346114 or visit our PWD Islamabad workshop.",
+    path: "/contact",
   });
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -70,11 +71,11 @@ export default function Contact() {
       <section className="px-6 md:px-16 py-20 max-w-7xl mx-auto text-center border-b border-gray-100">
         <FadeIn>
           <div className="uppercase tracking-[0.2em] text-sm text-gray-500 font-bold mb-6">Contact Us</div>
-          <h1 className="font-serif text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight mb-8">
-            Let's Discuss Your Project
+          <h1 className="font-serif text-[clamp(1.875rem,7vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-8 break-words">
+            Get a Free Quote in Islamabad or Rawalpindi
           </h1>
           <p className="text-gray-600 text-xl max-w-2xl mx-auto">
-            Reach out to schedule a consultation or discuss your aluminium, glass, or cooling project requirements.
+            Book a free site visit to discuss aluminium, glass, UPVC or AC / HVAC work anywhere across Islamabad, Rawalpindi and nearby sectors. Our engineers measure on site and quote within 24 hours.
           </p>
         </FadeIn>
       </section>
@@ -120,7 +121,7 @@ export default function Contact() {
                     <div>
                       <div className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-1">Email Us</div>
                       <div className="text-base sm:text-lg md:text-xl font-medium break-all">
-                        <a href="mailto:info@chishtialuminium.com" className="hover:underline">info@chishtialuminium.com</a>
+                        <a href="mailto:info@chishtiworks.com" className="hover:underline">info@chishtiworks.com</a>
                       </div>
                     </div>
                   </div>

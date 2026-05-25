@@ -99,8 +99,9 @@ function RollingDigit({ value, hoverKey }: { value: string; hoverKey: number }) 
 
 export default function Home() {
   useDocumentMeta({
-    title: "CHISHTI Aluminium & Cool Point — Premium Aluminium, Glass & HVAC in Islamabad",
-    description: "Premium aluminium systems, architectural glass installations, and HVAC cooling solutions for commercial and residential spaces in Islamabad and across Pakistan.",
+    title: "CHISHTI Aluminium & Cool Point — Aluminium, Glass, AC & HVAC in Islamabad & Rawalpindi",
+    description: "Premium aluminium windows, architectural glass, UPVC, office partitions and 24/7 AC / HVAC servicing in Islamabad, Rawalpindi & nearby sectors. Free site visit. Call 0305-8645051.",
+    path: "/",
   });
   const [hoverKeys, setHoverKeys] = useState([0, 0, 0, 0]);
   const [bgIndex, setBgIndex] = useState(0);
@@ -129,7 +130,7 @@ export default function Home() {
             <img
               key={idx}
               src={bgSrc}
-              alt="CHISHTI Aluminium & Cool Point — Premium Industrial Solutions"
+              alt="Aluminium windows, glass work and HVAC services in Islamabad & Rawalpindi by CHISHTI"
               className="absolute inset-0 w-full h-full object-cover object-center scale-105 transform-gpu transition-opacity duration-1000 ease-in-out"
               style={{ opacity: bgIndex === idx ? 1 : 0 }}
               fetchPriority={idx === 0 ? "high" : "low"}
@@ -143,11 +144,11 @@ export default function Home() {
         <div className="relative z-10 w-full max-w-7xl mx-auto">
           <FadeIn delay={0.2}>
             <div className="max-w-4xl">
-              <h1 className="font-serif text-5xl md:text-7xl lg:text-[80px] font-bold text-white leading-[1.05] tracking-tight mb-6 drop-shadow-lg">
-                Precision Aluminium & Cooling Solutions
+              <h1 className="font-serif text-[clamp(1.875rem,7vw,5rem)] md:text-6xl lg:text-7xl xl:text-[80px] font-bold text-white leading-[1.1] tracking-tight mb-6 drop-shadow-lg break-words">
+                Aluminium, Glass & HVAC Specialists in Islamabad & Rawalpindi
               </h1>
               <p className="text-gray-300 text-lg md:text-xl max-w-2xl mb-10 drop-shadow-md">
-                We engineer premium aluminium systems, architectural glass installations, and industrial cooling solutions — designed for modern commercial and residential spaces.
+                Premium aluminium windows, architectural glass, UPVC systems and 24/7 AC / HVAC servicing — engineered for homes, offices and commercial projects across Islamabad, Rawalpindi and nearby sectors.
               </p>
               <Link 
                 href="/contact"
@@ -172,11 +173,11 @@ export default function Home() {
           <div>
             <FadeIn>
               <div className="uppercase tracking-[0.2em] text-sm text-gray-500 font-bold mb-6">About Us</div>
-              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8">
-                Crafting Spaces With Industrial Precision
+              <h2 className="font-serif text-[clamp(1.625rem,6vw,3.75rem)] font-bold leading-[1.1] mb-8 break-words">
+                Crafting Modern Spaces With Industrial Precision
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                CHISHTI Aluminium & Cool Point is more than a contractor. We are an architectural solutions firm specializing in premium aluminium fabrication, modern glass systems, and complete HVAC installations. Every project is engineered for lasting performance and visual excellence.
+                CHISHTI Aluminium & Cool Point is more than a local contractor. We are an architectural solutions firm based in PWD Islamabad, specialising in premium aluminium fabrication, modern glass systems, UPVC and complete AC / HVAC installations across Islamabad and Rawalpindi. Every project is engineered for lasting performance and visual excellence.
               </p>
               
               <ul className="space-y-4 mb-10">
@@ -195,7 +196,7 @@ export default function Home() {
           </div>
           <FadeIn direction="left" delay={0.2} className="relative">
             <div className="rounded-2xl overflow-hidden aspect-[4/5] relative">
-              <img src={aboutImg} alt="CHISHTI precision aluminium fabrication" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+              <img src={aboutImg} alt="CHISHTI precision aluminium fabrication workshop in PWD Islamabad" loading="lazy" decoding="async" className="w-full h-full object-cover" />
             </div>
           </FadeIn>
         </div>
@@ -254,7 +255,7 @@ export default function Home() {
             <div className="absolute inset-0 z-0">
               <img 
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=72" 
-                alt="CHISHTI Premium Architectural Glass and Aluminium Facade" 
+                alt="Premium architectural glass and aluminium facade project by CHISHTI in Islamabad" 
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover object-center scale-105"
@@ -308,8 +309,8 @@ export default function Home() {
       <section className="py-24 lg:py-32 px-6 md:px-16 max-w-7xl mx-auto">
         <FadeIn className="mb-16">
           <div className="uppercase tracking-[0.2em] text-sm text-gray-500 font-bold mb-6">Our Expertise</div>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl">
-            Engineered for Modern Architecture
+          <h2 className="font-serif text-[clamp(1.625rem,6vw,3.75rem)] font-bold leading-[1.1] max-w-3xl break-words">
+            Engineered for Modern Architecture in Islamabad & Rawalpindi
           </h2>
         </FadeIn>
 
@@ -318,7 +319,7 @@ export default function Home() {
           <Link href="/services" className="group relative block rounded-2xl overflow-hidden md:row-span-2">
             <img 
               src={srvResImg} 
-              alt="Aluminium & Glass Systems" 
+              alt="Aluminium windows and architectural glass systems installed in Islamabad" 
               loading="lazy"
               decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
@@ -328,10 +329,10 @@ export default function Home() {
               <div className="font-serif text-7xl md:text-8xl font-bold text-white/20 select-none">01</div>
               <div>
                 <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3">
-                  Aluminium & Glass Systems
+                  Aluminium Windows & Glass Systems
                 </h3>
                 <p className="text-gray-300 text-sm md:text-base max-w-sm mb-4">
-                  Premium window systems, curtain walls, and architectural aluminium fabrication for residential and commercial structures.
+                  Premium aluminium windows, curtain walls, glass railings and architectural fabrication for residential and commercial buildings in Islamabad & Rawalpindi.
                 </p>
                 <div className="flex items-center gap-2 text-white font-bold text-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                   Explore <ArrowRight className="w-4 h-4" />
@@ -344,7 +345,7 @@ export default function Home() {
           <Link href="/services" className="group relative block rounded-2xl overflow-hidden">
             <img 
               src={srvComImg} 
-              alt="HVAC & Cooling Solutions" 
+              alt="AC installation and HVAC ducting services in Rawalpindi" 
               loading="lazy"
               decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
@@ -354,10 +355,10 @@ export default function Home() {
               <div className="font-serif text-6xl md:text-7xl font-bold text-white/20 select-none">02</div>
               <div>
                 <h3 className="font-serif text-xl md:text-2xl font-bold text-white mb-2">
-                  HVAC & Cooling Solutions
+                  AC, HVAC & Cooling Solutions
                 </h3>
                 <p className="text-gray-300 text-xs md:text-sm max-w-xs">
-                  Complete air conditioning installation, industrial ducting, and commercial cooling systems.
+                  AC installation, repair, ducted HVAC and commercial cooling — 24/7 service across Islamabad & Rawalpindi.
                 </p>
               </div>
             </div>
@@ -367,7 +368,7 @@ export default function Home() {
           <Link href="/services" className="group relative block rounded-2xl overflow-hidden">
             <img 
               src={srvRepImg} 
-              alt="Commercial & Interior Solutions" 
+              alt="Office glass partitions and commercial interior solutions in Blue Area Islamabad" 
               loading="lazy"
               decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
@@ -377,10 +378,10 @@ export default function Home() {
               <div className="font-serif text-6xl md:text-7xl font-bold text-white/20 select-none">03</div>
               <div>
                 <h3 className="font-serif text-xl md:text-2xl font-bold text-white mb-2">
-                  Commercial & Interior Solutions
+                  Office Partitions & Commercial Interiors
                 </h3>
                 <p className="text-gray-300 text-xs md:text-sm max-w-xs">
-                  Office partitions, corporate entrance systems, and luxury interior glass and aluminium installations.
+                  Office glass partitions, corporate entrances and shop fronts for Blue Area, I-8/I-9 and DHA offices.
                 </p>
               </div>
             </div>

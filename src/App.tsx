@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
+import { CookieConsent } from "@/components/CookieConsent";
 
 // Route-level code splitting: each page becomes its own chunk
 const Home = lazy(() => import("@/pages/home"));
@@ -15,6 +16,8 @@ const Services = lazy(() => import("@/pages/services"));
 const Projects = lazy(() => import("@/pages/projects"));
 const FAQ = lazy(() => import("@/pages/faq"));
 const Contact = lazy(() => import("@/pages/contact"));
+const Privacy = lazy(() => import("@/pages/privacy"));
+const Terms = lazy(() => import("@/pages/terms"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 function ScrollToTop() {
@@ -45,6 +48,8 @@ function Router() {
         <Route path="/projects" component={Projects} />
         <Route path="/faq" component={FAQ} />
         <Route path="/contact" component={Contact} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/terms" component={Terms} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
@@ -63,6 +68,7 @@ function App() {
               <Router />
             </main>
             <Footer />
+            <CookieConsent />
             <WhatsAppWidget />
           </div>
         </WouterRouter>

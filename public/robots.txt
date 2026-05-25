@@ -1,2 +1,23 @@
+# robots.txt for CHISHTI Aluminium & Cool Point
+# https://chishtiworks.com
+
 User-agent: *
 Allow: /
+
+# Block crawler access to build/asset junk if ever exposed
+Disallow: /assets/
+Disallow: /*.json$
+Disallow: /*?*
+
+# Allow major image / preview crawlers
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap
+Sitemap: https://chishtiworks.com/sitemap.xml

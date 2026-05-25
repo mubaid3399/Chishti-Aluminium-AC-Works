@@ -18,14 +18,15 @@ const aluFabricationImg = "https://images.unsplash.com/photo-1581094288338-2314d
 
 export default function Services() {
   useDocumentMeta({
-    title: "Services — Aluminium, Glass, HVAC & UPVC | CHISHTI",
-    description: "Explore CHISHTI's full range of services: aluminium fabrication, architectural glass, HVAC and refrigeration, UPVC doors, shower cabins, glass film, and commercial fit-outs.",
+    title: "Aluminium, Glass, AC & HVAC Services in Islamabad & Rawalpindi | CHISHTI",
+    description: "Aluminium windows & doors, glass railings, curtain walls, UPVC systems, office partitions, AC installation, HVAC ducting and refrigeration — across Islamabad, Rawalpindi & nearby sectors.",
+    path: "/services",
   });
   const services = [
     {
-      title: "Aluminium & Glass Systems",
+      title: "Aluminium Windows & Glass Systems",
       img: srvResImg,
-      desc: "Complete architectural aluminium and glass solutions — from premium window systems to full curtain wall facades. Precision-engineered for durability and modern aesthetics.",
+      desc: "Complete architectural aluminium and glass solutions across Islamabad & Rawalpindi — from premium aluminium windows and doors to full curtain wall facades, glass railings and shower cabins. Precision-engineered for the local climate and modern aesthetics.",
       features: [
         "Premium Aluminium Window & Door Systems",
         "Frameless Glass Installations",
@@ -35,9 +36,9 @@ export default function Services() {
       ]
     },
     {
-      title: "HVAC & Cooling Solutions",
+      title: "AC Installation, HVAC & Cooling Solutions",
       img: srvComImg,
-      desc: "Industrial-grade climate control for commercial and residential spaces. From single-unit installations to complete ducted systems — engineered for maximum efficiency.",
+      desc: "Industrial-grade climate control for offices, restaurants, factories and homes across Islamabad & Rawalpindi. From split AC installation and repair to complete ducted HVAC, refrigeration and gas charging — with 24/7 emergency response.",
       features: [
         "Complete AC Installation & Maintenance",
         "Commercial HVAC & Ducting Systems",
@@ -47,9 +48,9 @@ export default function Services() {
       ]
     },
     {
-      title: "Commercial & Office Solutions",
+      title: "Office Partitions & Commercial Solutions",
       img: srvRepImg,
-      desc: "Transform corporate spaces with premium partition systems, architectural entrances, and professional front elevations. Designed for productivity and visual impact.",
+      desc: "Transform offices in Blue Area, I-8, I-9 and Saddar Rawalpindi with premium glass partition systems, executive cabins, architectural entrances and shop-front elevations — designed for productivity and a premium brand impression.",
       features: [
         "Office Glass Partitions & Cabins",
         "Corporate Entrance Systems",
@@ -66,11 +67,11 @@ export default function Services() {
       <section className="px-6 md:px-16 py-20 max-w-7xl mx-auto text-center border-b border-gray-100">
         <FadeIn>
           <div className="uppercase tracking-[0.2em] text-sm text-gray-500 font-bold mb-6">Our Services</div>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-[80px] font-bold leading-[1.05] tracking-tight max-w-4xl mx-auto mb-10">
-            Engineered for Every Space
+          <h1 className="font-serif text-[clamp(1.875rem,7vw,5rem)] md:text-6xl lg:text-7xl xl:text-[80px] font-bold leading-[1.1] tracking-tight max-w-4xl mx-auto mb-10 break-words">
+            Aluminium, Glass & HVAC Services in Islamabad & Rawalpindi
           </h1>
           <p className="text-gray-600 text-xl max-w-2xl mx-auto">
-            From luxury residences to commercial towers, we deliver precision-engineered aluminium, glass, and cooling systems built to perform and designed to inspire.
+            From luxury residences in DHA and Bahria Town to commercial towers in Blue Area — we deliver precision-engineered aluminium windows, glass installations, UPVC systems and AC / HVAC solutions across the twin cities.
           </p>
         </FadeIn>
       </section>
@@ -81,7 +82,7 @@ export default function Services() {
           <div key={i} className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
             <FadeIn direction={i % 2 === 0 ? "right" : "left"} className={i % 2 !== 0 ? 'lg:order-last' : ''}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3] w-full">
-                <img src={srv.img} alt={srv.title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                <img src={srv.img} alt={`${srv.title} — CHISHTI Islamabad & Rawalpindi`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
               </div>
             </FadeIn>
             <FadeIn direction={i % 2 === 0 ? "left" : "right"}>
@@ -118,8 +119,8 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "UPVC & Door Systems",
-                desc: "Premium UPVC windows, soundproof double-glazed systems, and modern door installations for noise-free living.",
+                title: "UPVC Windows & Door Systems",
+                desc: "Premium UPVC windows, soundproof double-glazed systems and modern doors — ideal for main-road homes in Islamabad and offices in Rawalpindi where noise and dust insulation matter.",
                 img: upvcImg,
               },
               {
@@ -128,13 +129,13 @@ export default function Services() {
                 img: electricalImg,
               },
               {
-                title: "Refrigeration Services",
-                desc: "Complete refrigerator and deep freezer repair, commercial cold storage maintenance, and cooling diagnostics.",
+                title: "Refrigeration & Cold-Storage Services",
+                desc: "Refrigerator, deep freezer, walk-in cold-storage and commercial chiller repair across Islamabad & Rawalpindi — same-day diagnostics and gas charging.",
                 img: refrigerationImg,
               },
               {
-                title: "Glass Film & Protection",
-                desc: "Premium heat protection films, UV blocking, privacy solutions, and decorative glass films for commercial and residential use.",
+                title: "Glass Film, Tinting & Protection",
+                desc: "Heat-rejection film, UV blocking, privacy and decorative films for offices, shopfronts and homes — cooler interiors and lower AC load through Islamabad summers.",
                 img: glassFilmImg,
               },
               {
@@ -158,7 +159,7 @@ export default function Services() {
                   <div className="aspect-[16/10] w-full overflow-hidden">
                     <img
                       src={item.img}
-                      alt={item.title}
+                      alt={`${item.title} in Islamabad & Rawalpindi by CHISHTI`}
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"

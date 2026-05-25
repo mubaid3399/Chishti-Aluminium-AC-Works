@@ -3,44 +3,59 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { useDocumentMeta } from "@/hooks/use-document-meta";
 
 export default function FAQ() {
-  useDocumentMeta({
-    title: "FAQ — Aluminium, Glass & HVAC Questions Answered | CHISHTI",
-    description: "Answers to common questions about CHISHTI's aluminium fabrication, glass installation, HVAC servicing, project timelines, and warranties.",
-  });
   const faqs = [
     {
-      q: "What types of aluminium systems do you install?",
-      a: "We provide complete aluminium solutions including premium window systems (sliding, casement, fixed), door systems, curtain walls, cladding, kitchen cabinets, wardrobes, and custom fabrication. All systems use high-grade aluminium profiles engineered for durability and modern aesthetics."
+      q: "Which areas of Islamabad and Rawalpindi do you serve?",
+      a: "We work daily across Islamabad (DHA, Bahria Town, Gulberg Greens, PWD, G-13, F-10, Blue Area, E-11, B-17), Rawalpindi (Saddar, Chaklala Scheme III, Satellite Town, Bahria Phase 7/8), and surrounding areas. Larger projects across Pakistan are also handled on request."
+    },
+    {
+      q: "What types of aluminium windows and doors do you install in Islamabad?",
+      a: "We install premium aluminium sliding windows, casement and fixed windows, hinged and sliding doors, curtain walls, cladding, kitchen cabinets and custom fabrication — using architectural-grade profiles engineered for Islamabad and Rawalpindi weather conditions."
     },
     {
       q: "Do you handle both residential and commercial projects?",
-      a: "Yes. We serve luxury residences, corporate offices, commercial buildings, retail spaces, and industrial facilities. Our team is experienced in projects ranging from single-room installations to full building facades and commercial HVAC systems."
+      a: "Yes. We serve luxury residences, corporate offices, retail outlets and industrial facilities — from single-room aluminium and glass installations to full curtain-wall facades and commercial HVAC systems across Islamabad and Rawalpindi."
     },
     {
-      q: "What is included in your HVAC & cooling services?",
-      a: "Our cooling division covers complete AC installation, maintenance, and repair — including split units, ducted systems, and commercial HVAC. We also provide industrial ventilation, gas charging, and refrigeration services for cold storage and commercial appliances."
+      q: "What is included in your AC installation and HVAC services?",
+      a: "Our cooling division covers split AC installation, ducted and central HVAC systems, industrial ventilation, gas charging, AC repair and refrigeration servicing for cold storage and commercial kitchens — with 24/7 emergency response across the twin cities."
     },
     {
       q: "How long does a typical installation take?",
-      a: "Timelines vary by project scope. A standard window or door installation takes 1-2 days. Office partitions and glass cabin systems typically take 3-5 days. Full commercial facades and HVAC systems are quoted with precise timelines during our initial consultation."
+      a: "A standard aluminium window or door installation takes 1–2 days. Office glass partitions and shower cabins typically take 3–5 days. Full commercial facades and HVAC ducting projects are scheduled during the on-site survey."
     },
     {
       q: "Do you provide warranties on your installations?",
-      a: "Absolutely. All our installations come with a comprehensive workmanship warranty. Additionally, materials carry their respective manufacturer warranties. We use only premium-grade profiles and tempered glass from trusted suppliers."
+      a: "Yes. Every installation includes a written workmanship warranty, and materials such as aluminium profiles, tempered glass units and AC compressors carry their original manufacturer warranties."
     },
     {
-      q: "What makes CHISHTI different from other contractors?",
-      a: "We approach every project with architectural precision — not just trade-level work. This means premium materials, skilled craftsmen, clean job sites, and finished results that elevate your property's value. We are a full-service provider handling aluminium, glass, HVAC, and electrical under one roof."
+      q: "How is your pricing for aluminium and glass work in Islamabad?",
+      a: "Pricing depends on profile system, glass thickness, hardware grade and site complexity. We offer a free site visit and a transparent, itemised quote so you can compare honestly — no hidden charges."
     },
     {
-      q: "Can you provide custom fabrication for unique designs?",
-      a: "Yes. Our fabrication workshop handles custom aluminium profiles, bespoke glass solutions, and non-standard architectural requirements. We work directly with architects and designers to bring unique visions to life."
+      q: "Do you offer office glass partitions and UPVC double-glazed windows?",
+      a: "Yes. We design and install frameless and framed office glass partitions, executive cabins, and UPVC double-glazed windows for soundproofing and thermal insulation — ideal for offices in Blue Area, I-9 industrial zones and PWD."
     },
     {
-      q: "Do you offer maintenance contracts for commercial clients?",
-      a: "We offer annual maintenance agreements for HVAC systems, aluminium facades, and glass installations. These contracts include scheduled inspections, preventive maintenance, and priority service response for commercial clients."
+      q: "Can I get emergency AC or refrigeration repair in Islamabad or Rawalpindi?",
+      a: "Yes. We respond to emergency AC, HVAC and commercial refrigeration breakdowns 24/7 across Islamabad and Rawalpindi — including restaurants, pharmacies and cold-storage facilities."
     }
   ];
+
+  useDocumentMeta({
+    title: "FAQ — Aluminium, Glass, AC & HVAC Questions Answered | CHISHTI Islamabad",
+    description: "Answers about aluminium windows, glass partitions, UPVC, AC installation, HVAC servicing, project timelines, warranties and service areas across Islamabad & Rawalpindi.",
+    path: "/faq",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  });
 
   return (
     <div className="min-h-screen bg-white pt-32">
@@ -52,7 +67,7 @@ export default function FAQ() {
             Frequently Asked Questions
           </h1>
           <p className="text-gray-600 text-lg">
-            Everything you need to know about our aluminium, glass, HVAC services, and project process.
+            Everything you need to know about our aluminium, glass, UPVC and AC / HVAC services across Islamabad, Rawalpindi and nearby sectors.
           </p>
         </FadeIn>
       </section>
