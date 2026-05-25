@@ -87,6 +87,7 @@ export function Footer() {
           <ul className="flex flex-col gap-4 text-gray-400">
             <li><a href="tel:0515975105" className="hover:text-white transition-colors">051-5975105</a></li>
             <li><a href="tel:03058645051" className="hover:text-white transition-colors">0305-8645051</a></li>
+            <li><a href="tel:03085346114" className="hover:text-white transition-colors">0308-5346114</a></li>
             <li><a href="mailto:info@chishtiworks.com" className="hover:text-white transition-colors">info@chishtiworks.com</a></li>
             <li>P.W.D Street Number 1, Block A Sector A PWD Society<br/>Islamabad, 43000, Pakistan</li>
             <li className="flex items-start gap-2 pt-2 border-t border-white/10 mt-2">
