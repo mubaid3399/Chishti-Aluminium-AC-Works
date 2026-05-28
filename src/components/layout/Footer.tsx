@@ -60,7 +60,7 @@ export function Footer() {
               <FaInstagram className="w-4 h-4" />
             </a>
             <a 
-              href="https://www.tiktok.com/@chshtialuminiumcoolpoint" 
+              href="https://www.tiktok.com/@chishtialuminiumcoolhub" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="w-10 h-10 rounded-full border border-white/10 hover:border-white/40 flex items-center justify-center text-gray-400 hover:text-white hover:scale-105 transition-all duration-300"

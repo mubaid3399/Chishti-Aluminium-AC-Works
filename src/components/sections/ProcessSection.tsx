@@ -48,23 +48,22 @@ function ProcessFlow({ label, heading, steps, reversed = false }: ProcessFlowPro
 
     if (isLightMode) {
       let idx = 0;
-      let visible = false;
       let timer: ReturnType<typeof setInterval> | null = null;
 
       const io = new IntersectionObserver(
         ([entry]) => {
-          visible = entry.isIntersecting;
-          if (visible && !timer) {
+          if (entry.isIntersecting && !timer) {
+            setActiveStep(idx);
             timer = setInterval(() => {
               idx = (idx + 1) % totalSteps;
               setActiveStep(idx);
-            }, 3500);
-          } else if (!visible && timer) {
+            }, 2600);
+          } else if (!entry.isIntersecting && timer) {
             clearInterval(timer);
             timer = null;
           }
         },
-        { threshold: 0.4 }
+        { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
       );
       io.observe(section);
 
@@ -100,9 +99,9 @@ function ProcessFlow({ label, heading, steps, reversed = false }: ProcessFlowPro
     <div ref={triggerRef}>
       <div
         ref={sectionRef}
-        className="h-screen w-full bg-white overflow-hidden"
+        className="min-h-[100svh] md:h-screen w-full bg-white overflow-visible md:overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 w-full h-full flex flex-col justify-center py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 w-full min-h-[100svh] md:h-full flex flex-col justify-center py-16 md:py-20">
           {/* Compact Label + Heading */}
           <div className="mb-4 md:mb-8">
             <div className="uppercase tracking-[0.2em] text-[10px] md:text-xs text-gray-400 font-bold mb-2">
